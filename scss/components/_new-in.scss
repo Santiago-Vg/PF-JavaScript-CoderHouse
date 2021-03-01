@@ -1,0 +1,47 @@
+/* New In */
+
+.new-in {
+    @extend %bg-dark-config;
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: auto;
+        overflow: hidden;
+
+        .newin-title {
+            color: $txt-color-highlights;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .newin-maintitle {
+            color: $txt-color-light;
+            font-weight: 900;
+            font-size: 3.5rem;
+            letter-spacing: .8px;
+        }
+
+        p {
+            color: $txt-color-light;
+            font-weight: 400;
+            font-size: .9rem;
+            letter-spacing: .3px;
+            padding: .7rem 0;
+        }
+    }
+
+    .ver-mas-btn {
+        @include btn-config (.9rem);
+        @extend %pulsate;
+    }
+
+    .imgs {
+        img {
+            margin: 2rem 0;
+        }
+    }
+}
+

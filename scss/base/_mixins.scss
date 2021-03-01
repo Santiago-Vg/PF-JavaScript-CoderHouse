@@ -1,0 +1,55 @@
+// Mixins
+
+// Buttons
+@mixin btn-config ($font-size) {
+    border: none;
+    background-color: $btn-color;
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    color: $txt-color-light;
+    font-size: $font-size;
+
+    &:hover {
+        opacity: 80%;
+        color: $hover-color-dark;
+    }
+
+    &:active {
+        background-color: $txt-color-light;
+    }
+}
+
+// Gallery Titles
+@mixin Gallery-Tit-Sm ($padding) {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: $txt-color-highlights;
+    padding: $padding;
+}
+
+@mixin Gallery-Tit ($padding) {
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: $txt-color-dark;
+    padding: $padding;
+}
+
+
+// Animations
+@mixin slide-in-top-sm ($timing) {
+    -webkit-animation: slide-in-top-sm $timing cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-top-sm $timing cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+}
+
+@mixin slide-in-top-lg ($timing) {
+    -webkit-animation: slide-in-top-lg $timing cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-top-lg $timing cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+}

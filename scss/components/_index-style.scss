@@ -1,0 +1,42 @@
+/* Index Style */
+
+.welcome {
+    @extend %bg-dark-config;
+    height: 100vh;
+    width: 100%;
+
+    .index-welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 45vh;
+
+        .logo-in {
+            font-size: 5vw;
+            font-weight: 700;
+            color: $txt-color-light;
+            letter-spacing: 10px;
+            padding-bottom: 1vw;
+        }
+
+        .button-container {
+            a {
+                font-size: 1.5vw;
+                font-weight: 400;
+                color: $txt-color-light;
+                text-decoration: none;
+                padding: 0vw 1vw;
+                margin: 0 1vw;
+                border-left: 1px solid $txt-color-light;
+                border-right: 1px solid $txt-color-light;
+
+                &:hover {
+                    color: $hover-color;
+                    border-left: 1px solid $hover-color;
+                    border-right: 1px solid $hover-color;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,23 @@
+/* Extends */
+
+
+// Backgrounds
+%bg-dark-config {
+    background: url(../images/background.jpg);
+    background-size: cover;
+}
+
+%bg-light-config {
+    background: url(../images/background2.jpg);
+    background-size: cover;
+}
+
+// Button Animations
+%pulsate {
+    -webkit-animation: pulsate-fwd 1.5s ease-in-out infinite both;
+    animation: pulsate-fwd 1.5s ease-in-out infinite both;  
+}
+
+
+
+

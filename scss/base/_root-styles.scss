@@ -1,0 +1,31 @@
+/* Root Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: montserrat, sans-serif;
+}
+
+#modal-message .modal-content {
+    background-color: $txt-color-dark;
+    margin: 40% auto;
+    border: 1px solid $txt-color-light;
+    width: 90%;
+    p {
+        color: $txt-color-light;
+        text-align: center;
+
+        &::before {
+            content: "Ups...!";
+            display: block;
+            padding-bottom: 1rem;
+            color: $txt-color-highlights;
+            font-size: 4rem;
+            font-weight: 600;
+        }
+    }
+}

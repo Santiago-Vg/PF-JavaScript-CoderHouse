@@ -1,0 +1,90 @@
+/* KeyFrames */
+
+// Animations - Pulsate 
+
+@-webkit-keyframes pulsate-fwd {
+        0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+        }
+        50% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+        }
+        100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+        }
+}
+
+@keyframes pulsate-fwd {
+        0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+        }
+        50% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+        }
+        100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+        }
+}
+
+
+// Animations - Slide-in-top Small
+
+@-webkit-keyframes slide-in-top-sm {
+        0% {
+                -webkit-transform: translateY(-300px);
+                transform: translateY(-300px);
+                opacity: 0;
+        }
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+        }
+}
+
+@keyframes slide-in-top-sm {
+        0% {
+                -webkit-transform: translateY(-300px);
+                transform: translateY(-300px);
+                opacity: 0;
+        }
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+        }
+}
+
+// Animations - Slide-in-top Large
+
+@-webkit-keyframes slide-in-top-lg {
+        0% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+        }
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+        }
+}
+
+@keyframes slide-in-top-lg {
+        0% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+        }
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+        }
+}

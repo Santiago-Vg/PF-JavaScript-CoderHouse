@@ -1,0 +1,29 @@
+/* BASE */
+@import "variables";
+@import "root-styles";
+@import "extends";
+@import "mixins";
+@import "media-queries";
+@import "keyframes";
+
+
+/* COMPONENTS */
+@import "../components/navbar";
+@import "../components/video-opener";
+@import "../components/new-in";
+@import "../components/collections";
+@import "../components/press";
+@import "../components/contact";
+@import "../components/footer";
+
+    // Index Styles
+    @import "../components/index-style";
+
+    // Collection Page Styles 
+    @import "../components/col-pages-style";
+
+    // Store Styles 
+    @import "../components/store";
+
+
+

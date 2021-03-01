@@ -1,0 +1,45 @@
+/* Navbar Menu */
+.navbar-container {
+    line-height: 3rem;
+
+    .navbar-row {
+        background-color: $bg-color-dark;
+
+        .logo-link {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: .3rem;
+        }
+
+        .tienda-btn {
+            text-decoration: none;
+            font-weight: 300;
+            font-size: .9rem;
+            border: 1px solid $txt-color-light;
+            border-radius: 30px;
+            padding: .2rem .8rem;
+        }
+
+        .navbar-text a:hover {
+            color: $hover-color;
+        }
+
+        #navbarText > ul > li:nth-child(n) > a,
+        #navbarText > span > i:nth-child(n) {
+            font-size: .9rem;
+            color: $txt-color-light;
+            font-weight: 300;
+
+            &:hover {
+                color: $hover-color;
+            }
+
+        }
+    }
+}
+
+
+
+
+
+

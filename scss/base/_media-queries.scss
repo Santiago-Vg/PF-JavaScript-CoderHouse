@@ -1,0 +1,56 @@
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+
+        img {
+            filter: grayscale(0) brightness(1);
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+
+@media only screen and (max-width: 990px) {
+    .press-card-title {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:  1000px) {
+    .new-in .text,
+    .new-in .imgs {
+        @include slide-in-top-sm (0.3s);
+    }
+
+    .colections .carousel {
+        @include slide-in-top-sm (0.5s);
+
+    }
+    
+    .press-card, .press-card-title {
+        @include slide-in-top-lg (0.9s);
+    }
+
+    .contact-section {
+        .form-row,
+        .enviar-btn,
+        h4, p {
+            @include slide-in-top-lg (1.1s);
+        }
+    }
+
+    .gallery-undertitle-sm,
+    .gallery-undertitle,
+    .gallery-credits {
+        @include slide-in-top-lg (1.2s);
+    }
+}
+

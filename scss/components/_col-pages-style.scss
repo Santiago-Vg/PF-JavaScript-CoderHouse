@@ -1,0 +1,75 @@
+/* Collections Pages Styles*/
+
+.gallery-container {
+    @extend %bg-light-config;
+    padding: 2rem 0 5rem 0;
+
+    .gallery-title-sm {
+        @include Gallery-Tit-Sm (8rem 0 0 0);
+    }
+
+    .gallery-title{
+        @include Gallery-Tit (0 0 .7rem 0);
+    }
+
+    .gallery-about {
+        text-align: center;
+        font-size: .9rem;
+        padding: 0 15% 2rem 15%;
+    }
+
+    .gallery-undertitle-sm {
+        @include Gallery-Tit-Sm (6rem 0 0 0);
+    }
+
+    .gallery-undertitle{
+        @include Gallery-Tit (.3rem 0 .9rem 0);
+    }
+
+    .gallery-credits {
+        text-align: center;
+        font-size: .8rem;
+        letter-spacing: 1px;
+        line-height: 1.8rem;
+        padding: 0 20% 2rem 20%;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+
+        .column {
+            flex: 25%;
+            max-width: 33.3%;
+            padding: 0 4px;
+
+            .gallery-img {
+                margin-top: 8px;
+                vertical-align: middle;
+                width: 100%;
+                filter: grayscale(1) brightness(0.5);
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s linear;
+
+                &:hover {
+                    filter: grayscale(0);
+                }
+            }
+        }
+
+        .modal-content {
+            background-color: transparent;
+            border: none;
+            width: 100%;
+        }
+
+        .button-gallery {
+            border: none;
+            background-color: transparent;
+        }
+        
+    }
+}
+

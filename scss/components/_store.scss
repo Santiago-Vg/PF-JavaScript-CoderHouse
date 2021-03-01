@@ -1,0 +1,102 @@
+/* Store Page Style */
+
+#store {
+    @extend %bg-dark-config;
+    padding: 8rem 0 0 0;
+
+    .store-tit {
+        color: $txt-color-light;
+        font-size: 2.7rem;
+        font-weight: 800;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+
+    .store-tit-sm {
+        color: $txt-color-highlights;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: .5px;
+    }
+
+    .filters {
+        width: 15%;
+        text-decoration: none;
+        padding: .8rem 0 1rem 0;
+        color: $txt-color-light;
+        
+        &:hover {
+            color: $hover-color !important;
+        }
+
+        i {
+            display: flex;
+            justify-content: flex-start;
+            pointer-events: none;
+            margin: 1.5rem 0 0 .5rem;
+
+
+            p {
+                font-family: montserrat, sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                padding-left: .7rem;
+            }
+        }
+    }
+
+    .card {
+        background-color: transparent;
+        color: $txt-color-light;
+        border-left: 1px solid $txt-color-light;
+
+        .label-store {
+            z-index: 10;
+            position: absolute;
+            top: .6rem;
+            font-size: .65rem;
+            padding: .2rem 1rem .2rem 1rem;
+            background-color: rgba(0, 0, 0, 0.637);
+            border: .2px solid $txt-color-light;
+            border-radius: 30px;
+            pointer-events: none;
+        }
+
+        .piece-name {
+            font-weight: 700;
+            font-size: .9rem;
+            letter-spacing: .5px;
+        }
+
+        .piece-value {
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: 1px;
+            margin: -.8rem 0 1.5rem 0;
+        }
+        
+        .store-img {
+            margin: 0 auto;
+            padding: 0 0 1rem 0;
+
+            &:hover {
+                opacity: 90%;
+            }
+        }
+
+        .modal-content {
+            background-color: transparent;
+            border: none;
+            width: 100%;
+        }
+
+        .ver-mas-btn {
+            @include btn-config (.8rem)
+        }
+    }
+
+    .last-row {
+        padding-bottom: 8rem !important;
+    }
+}

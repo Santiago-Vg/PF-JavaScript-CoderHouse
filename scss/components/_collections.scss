@@ -1,0 +1,14 @@
+/* Collections */
+
+.colections {
+    padding: 0 0 4rem 0;
+    @extend %bg-dark-config;
+
+    .carousel {
+        padding: 0 !important;
+
+        a:active img {
+            opacity: 90%;
+        }
+    }
+}

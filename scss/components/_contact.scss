@@ -1,0 +1,46 @@
+/* Contact */
+
+.contact-section {
+    @extend %bg-light-config;
+    padding: 8rem 0 5rem 0;
+    transition: 0.5s linear;
+
+    h3 {
+        font-weight: 700;
+        padding-bottom: 1.5rem;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: .8rem;
+    }
+
+    .enviar-btn {
+        @include btn-config (.8rem);
+    }
+
+    .form-row {
+        font-weight: 700;
+        font-size: .9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: 2rem;
+
+        input, textarea {
+            width: 90%;
+            border: 1px solid transparent;
+            border-bottom: 1px solid gray;
+            background-color: transparent;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        label {
+            padding: 0rem 0 .8rem 0;
+        }
+    }
+    
+}
+
