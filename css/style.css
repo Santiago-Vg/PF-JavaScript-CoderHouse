@@ -46,74 +46,6 @@ body {
   animation: pulsate-fwd 1.5s ease-in-out infinite both;
 }
 
-/* Media Queries */
-@media screen and (max-width: 400px) {
-  .welcome .index-welcome .button-container a {
-    font-size: 3.5vw !important;
-    padding: 0vw 2vw !important;
-  }
-}
-@media screen and (max-width: 600px) {
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
-  .column img {
-    filter: grayscale(0) brightness(1);
-  }
-}
-@media screen and (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-@media only screen and (max-width: 990px) {
-  .press-card-title {
-    display: none;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .new-in .text,
-.new-in .imgs {
-    -webkit-animation: slide-in-top-sm 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: slide-in-top-sm 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-  }
-
-  .colections .carousel {
-    -webkit-animation: slide-in-top-sm 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: slide-in-top-sm 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-  }
-
-  .press-card, .press-card-title {
-    -webkit-animation: slide-in-top-lg 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: slide-in-top-lg 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-  }
-
-  .contact-section .form-row,
-.contact-section .enviar-btn,
-.contact-section h4, .contact-section p {
-    -webkit-animation: slide-in-top-lg 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: slide-in-top-lg 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-  }
-
-  .gallery-undertitle-sm,
-.gallery-undertitle,
-.gallery-credits {
-    -webkit-animation: slide-in-top-lg 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: slide-in-top-lg 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-  }
-}
 /* KeyFrames */
 @-webkit-keyframes pulsate-fwd {
   0% {
@@ -634,6 +566,76 @@ body {
 }
 #store .last-row {
   padding-bottom: 8rem !important;
+}
+
+/* MEDIA QUERIES */
+/* Media Queries */
+@media screen and (max-width: 400px) {
+  .welcome .index-welcome .button-container a {
+    font-size: 3.5vw !important;
+    padding: 0vw 2vw !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+  .column img {
+    filter: grayscale(0) brightness(1);
+  }
+}
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .press-card-title {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .new-in .text,
+.new-in .imgs {
+    -webkit-animation: slide-in-top-sm 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-top-sm 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  .colections .carousel {
+    -webkit-animation: slide-in-top-sm 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-top-sm 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  .press-card, .press-card-title {
+    -webkit-animation: slide-in-top-lg 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-top-lg 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  .contact-section .form-row,
+.contact-section .enviar-btn,
+.contact-section h4, .contact-section p {
+    -webkit-animation: slide-in-top-lg 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-top-lg 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
+
+  .gallery-undertitle-sm,
+.gallery-undertitle,
+.gallery-credits {
+    -webkit-animation: slide-in-top-lg 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-top-lg 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

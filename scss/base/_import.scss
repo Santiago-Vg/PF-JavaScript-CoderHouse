@@ -3,9 +3,7 @@
 @import "root-styles";
 @import "extends";
 @import "mixins";
-@import "media-queries";
 @import "keyframes";
-
 
 /* COMPONENTS */
 @import "../components/navbar";
@@ -24,6 +22,10 @@
 
     // Store Styles 
     @import "../components/store";
+
+    
+/* MEDIA QUERIES */
+@import "media-queries";
 
 
 
