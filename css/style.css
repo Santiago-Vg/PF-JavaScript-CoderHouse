@@ -47,6 +47,12 @@ body {
 }
 
 /* Media Queries */
+@media screen and (max-width: 400px) {
+  .welcome .index-welcome .button-container a {
+    font-size: 3.5vw !important;
+    padding: 0vw 2vw !important;
+  }
+}
 @media screen and (max-width: 600px) {
   .column {
     flex: 100%;
