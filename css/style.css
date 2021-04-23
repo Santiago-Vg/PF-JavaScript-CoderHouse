@@ -11,22 +11,55 @@ body {
   font-family: montserrat, sans-serif;
 }
 
-#modal-message .modal-content {
+#modal-message .modal-content,
+#modal-message2 .modal-content,
+#modal-message3 .modal-content {
   background-color: #000;
   margin: 40% auto;
   border: 1px solid #fff;
   width: 90%;
 }
-#modal-message .modal-content p {
+#modal-message .modal-content p,
+#modal-message2 .modal-content p,
+#modal-message3 .modal-content p {
   color: #fff;
   text-align: center;
 }
-#modal-message .modal-content p::before {
-  content: "Ups...!";
+#modal-message .modal-content p::before,
+#modal-message2 .modal-content p::before,
+#modal-message3 .modal-content p::before {
+  content: "¡Producto Añadido!";
   display: block;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   color: #CAA682;
-  font-size: 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+#modal-message .modal-content label,
+#modal-message2 .modal-content label,
+#modal-message3 .modal-content label {
+  color: #fff;
+  text-align: center;
+}
+
+#modal-message2 .modal-content p::before {
+  content: "¡Ups!";
+  display: block;
+  padding-top: 0.2rem;
+  padding-bottom: 1rem;
+  color: #CAA682;
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+#modal-message3 .modal-content p::before {
+  content: "¡Gracias por tu Compra!";
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #CAA682;
+  font-size: 2rem;
   font-weight: 600;
 }
 
@@ -535,6 +568,19 @@ body {
   font-size: 0.8rem;
   letter-spacing: 1px;
   margin: -0.8rem 0 1.5rem 0;
+  padding-top: 0.8rem;
+}
+#store .card .piece-value::before {
+  content: "$ ";
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+#store .card .piece-value::after {
+  content: ",00";
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 #store .card .store-img {
   margin: 0 auto;
@@ -564,8 +610,77 @@ body {
 #store .card .ver-mas-btn:active {
   background-color: #fff;
 }
+#store .cart-title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.3rem;
+  letter-spacing: 0.4rem;
+  margin: 3rem 0 1rem 0;
+}
+#store .table {
+  color: #fff;
+}
+#store .table th {
+  font-weight: 500;
+}
+#store .line {
+  background-color: #fff;
+  height: 0.4rem;
+}
+#store #template-footer {
+  font-family: "Times New Roman", Times, serif;
+}
+#store .add-btn,
+#store .rem-btn,
+#store .empty-btn {
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #CAA682;
+  border-radius: 10px;
+  background-color: #CAA682;
+}
+#store .add-btn:hover,
+#store .rem-btn:hover,
+#store .empty-btn:hover {
+  opacity: 80%;
+  color: #000;
+}
+#store .add-btn:active,
+#store .rem-btn:active,
+#store .empty-btn:active {
+  background-color: #fff;
+}
+#store .rem-btn {
+  padding: 0.2rem 0.6rem;
+}
+#store .empty-btn {
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+}
 #store .last-row {
   padding-bottom: 8rem !important;
+}
+#store .cart-end {
+  border: none;
+  background-color: #CAA682;
+  border-radius: 30px;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+#store .cart-end:hover {
+  opacity: 80%;
+  color: #000;
+}
+#store .cart-end:active {
+  background-color: #fff;
 }
 
 /* MEDIA QUERIES */

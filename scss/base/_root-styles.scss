@@ -10,7 +10,9 @@ body {
     font-family: montserrat, sans-serif;
 }
 
-#modal-message .modal-content {
+#modal-message .modal-content,
+#modal-message2 .modal-content,
+#modal-message3 .modal-content{
     background-color: $txt-color-dark;
     margin: 40% auto;
     border: 1px solid $txt-color-light;
@@ -20,12 +22,46 @@ body {
         text-align: center;
 
         &::before {
-            content: "Ups...!";
+            content: "¡Producto Añadido!";
             display: block;
+            padding-top: 1rem;
             padding-bottom: 1rem;
             color: $txt-color-highlights;
-            font-size: 4rem;
+            font-size: 2rem;
             font-weight: 600;
+        }
+    }
+
+    label {
+        color: $txt-color-light;
+        text-align: center;
+    }
+}
+
+#modal-message2 .modal-content{
+    p {
+        &::before {
+            content: "¡Ups!";
+            display: block;
+            padding-top: .2rem;
+            padding-bottom: 1rem;
+            color: $txt-color-highlights;
+            font-size: 5rem;
+            font-weight: 600;
+        }
+    }
+}
+
+#modal-message3 .modal-content{
+    p {
+        &::before {
+            content: "¡Gracias por tu Compra!";
+            display: block;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            color: $txt-color-highlights;
+            font-size: 2rem;
+            font-weight: 600;    
         }
     }
 }
