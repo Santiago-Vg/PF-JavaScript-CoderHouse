@@ -104,7 +104,7 @@
     const createFooter = () => {
         noProducts.innerHTML = ''
         if (Object.keys(cart).length === 0) {
-            noProducts.innerHTML = '<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>'
+            noProducts.innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
             return
         }
         const nAmount = Object.values(cart).reduce((acc, {amount}) => acc + amount, 0)
