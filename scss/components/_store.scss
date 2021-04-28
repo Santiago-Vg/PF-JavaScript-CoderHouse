@@ -20,30 +20,21 @@
         letter-spacing: .5px;
     }
 
-    .filters {
-        width: 15%;
-        text-decoration: none;
-        padding: .8rem 0 1rem 0;
+    #collections {
+        margin: 3rem 0 2rem 0;
+        height: 2.5rem;
+        border-radius: 18px;
+        background-color: transparent;
         color: $txt-color-light;
-        
-        &:hover {
-            color: $hover-color !important;
-        }
+        font-size: 1rem;
+        width: 20%;
+    }
 
-        i {
-            display: flex;
-            justify-content: flex-start;
-            pointer-events: none;
-            margin: 1.5rem 0 0 .5rem;
+    #product-filter {
+        margin: 3rem 0 2rem .5rem;
+        @include btn-config (.85rem);
+        border-radius: 18px;
 
-
-            p {
-                font-family: montserrat, sans-serif;
-                font-size: 1rem;
-                font-weight: 500;
-                padding-left: .7rem;
-            }
-        }
     }
 
     .card {

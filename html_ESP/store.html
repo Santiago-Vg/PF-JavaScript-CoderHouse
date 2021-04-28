@@ -91,18 +91,17 @@
                 <div class="row store-titles text-center">
                     <p class="store-tit-sm">cruxstudio_</p>
                     <h1 id="store-tit" class="store-tit mb-3">TIENDA ONLINE</h1>
-                    <a class="filters" data-bs-toggle="modal" data-bs-target="#modal-message2"><i class="fas fa-list">
-                            <p>Ordenar</p>
-                        </i></a>
+                    <select id="collections" class="col-md-2">
+                        <option value="All">Todas las Colecciones</option>
+                        <option value="Casette Collection">Casette Collection</option>
+                        <option value="Best Seller">Best Seller</option>
+                        <option value="X Meets Cloter">X Meets Cloter</option>
+                        <option value="The New Hangers">The New Hangers</option>
+                    </select>
+                    <button id="product-filter" class="col-md-1" onclick=fetchData()>Filtrar</button>
                 </div>
                 <!-- Productos -->
                 <div class="row align-items-center justify-content-center pb-2 first-row" id="cards">
-                    <div class="card col-md-3 col-10 mb-5 align-items-center" id="base-card">
-                        <img class="store-img img-fluid w-75" src="">
-                        <h2 class="piece-name"></h2>
-                        <p class="piece-value"></p>
-                        <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message">Comprar</button>
-                    </div>
                 </div>
                     <!-- Carrito -->
                     <!-- Contenido -->
@@ -120,34 +119,9 @@
                         </thead>
                         <tbody id="items"></tbody>
                         <tfoot>
-                            <tr id="no-products-msg">
-                                <th scope="row" colspan="5">Carrito Vacío</th>
-                            </tr>
+                            <tr id="cart-footer"></tr>
                         </tfoot>
                     </table>
-                    <template id="buy-cart">
-                        <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a class="add-btn">+</a>
-                                <a class="rem-btn">-</a>
-                            </td>
-                            <td><span></span></td>
-                        </tr>
-                    </template>
-                    <!-- Vaciar Carrito -->
-                    <template id="cart-footer">
-                        <th scope="row" colspan="2">Productos en el carrito</th>
-                        <td>10</td>
-                        <td>
-                            <button class="btn empty-btn btn-sm" id="empty-cart">
-                                vaciar carrito
-                            </button>
-                        </td>
-                        <td class="font-weight-bold">$ <span>5000</span></td>
-                    </template>
                     <!-- Finalizar Compra -->
                     <div class="row text-end">
                         <div class="col-12">

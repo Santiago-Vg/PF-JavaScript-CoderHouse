@@ -1,19 +1,9 @@
-// APP TIENDA ONLINE V.1
+// APP TIENDA ONLINE V.2
 
-// CONSTANTES - Obtenidas del DOM
-    const cards = document.getElementById('cards')
-    const productCard = document.getElementById('base-card')
-    const items = document.getElementById('items')
-    const noProducts = document.getElementById('no-products-msg')
-    const cartFooter = document.getElementById('cart-footer').content
-    const buyCart = document.getElementById('buy-cart').content
-    const fragment = document.createDocumentFragment()
+// DECLARAR CARRITO
+    let cart = []
 
-// CARRITO
-    let cart = {}
-
-// EVENTOS
-    // Cargar Contenido
+// CARGAR CONTENIDO
     document.addEventListener('DOMContentLoaded', () => {
         fetchData()
         if (localStorage.getItem('cart')) {
@@ -22,123 +12,139 @@
         createCart()
     })
 
-    // Añadir element al Carrito
-    cards.addEventListener('click', (e) => addCart(e))
-
-    // Botones Agregar/Quitar element al Carrito 
-    items.addEventListener('click', (e) => {
-        btnAccion(e)
-    })
-
-// VINCULAR DATA DE elementS
+// VINCULAR DATA DE PRODUCTOS
     const fetchData = async () => {
         try {
             const res = await fetch('../api.json')
             const data = await res.json()
-            createCards(data)
+            const collections = document.getElementById('collections')
+            const dataFiltrada = data.filter(el => el.collection === collections.value)
+            if (dataFiltrada.length === 0) {
+                createCards(data)
+            } else {
+                createCards(dataFiltrada)
+            }
         } catch (error){
             console.log(error);
         }
     }
 
-// FUNCIONES
-    // Crear Tarjetas de Productos
+// CREAR TARJETAS DE PRODUCTOS
+    const cards = document.getElementById('cards')
     const createCards = (data) => {
+        cards.innerHTML = ''
         data.forEach(element => {
-            productCard.querySelector('h2').textContent = element.title
-            productCard.querySelector('p').textContent = element.prize
-            productCard.querySelector('img').setAttribute("src", element.thumbnailUrl)
-            productCard.querySelector('.buy').dataset.id = element.id
-
-            const clone = productCard.cloneNode(true)
-            fragment.appendChild(clone)
-        })
-        cards.appendChild(fragment)
-    }
-
-    // Añadir Producto al carrito
-    const addCart = (e) => {
-        if (e.target.classList.contains('buy')) {   
-            setCart(e.target.parentElement)
-        }
-        e.stopPropagation()
-    } 
-
-    // Mostrar Producto en el carrito
-    const setCart = (object) => {
-        const element = {
-            id: object.querySelector('.buy').dataset.id,
-            title: object.querySelector('h2').textContent,
-            prize: object.querySelector('p').textContent,
-            amount: 1
-        }
-        if (cart.hasOwnProperty(element.id)) {
-            element.amount = cart[element.id].amount + 1
-        }
-        cart[element.id] = {...element}
-        createCart();
-    }
-
-    // Crear Carrito - Guardarlo en LocalStorage
-    const createCart = () => {
-        console.log(cart);
-        items.innerHTML = ''
-        Object.values(cart).forEach( (element) => {
-            buyCart.querySelector('th').textContent = element.id
-            buyCart.querySelectorAll('td')[0].textContent = element.title
-            buyCart.querySelectorAll('td')[1].textContent = element.amount
-            buyCart.querySelector('.add-btn').dataset.id = element.id
-            buyCart.querySelector('.rem-btn').dataset.id = element.id
-            buyCart.querySelector('span').textContent = parseFloat(element.amount) * parseFloat(element.prize)
-
-            const clone = buyCart.cloneNode(true)
-            fragment.appendChild(clone)
-        })
-        items.appendChild(fragment)
-        createFooter()
-
-        localStorage.setItem('cart', JSON.stringify(cart))
-    }
-
-    // Calcular prize Final del Carrito
-    const createFooter = () => {
-        noProducts.innerHTML = ''
-        if (Object.keys(cart).length === 0) {
-            noProducts.innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
-            return
-        }
-        const nAmount = Object.values(cart).reduce((acc, {amount}) => acc + amount, 0)
-        const nPrize = Object.values(cart).reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
-        
-        cartFooter.querySelectorAll('td')[0].textContent = nAmount
-        cartFooter.querySelector('span').textContent = nPrize
-
-        const clone = cartFooter.cloneNode(true)
-        fragment.appendChild(clone)
-        noProducts.appendChild(fragment)
-
-        const btnEmptyCart = document.getElementById('empty-cart')
-        btnEmptyCart.addEventListener('click', () => {
-            cart = {}
-            createCart()
+            cards.innerHTML += `
+                <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
+                <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
+                <h2 class="piece-name">${element.title}</h2>
+                <p class="piece-value">${element.prize}</p>
+                <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message">Comprar</button> 
+                </div>`
         })
     }
 
-    // Botones +/- del Carrito
-    const btnAccion = (e) => {
-        if(e.target.classList.contains('add-btn')) {
-            const element = cart[e.target.dataset.id]
-            element.amount++
-            cart[e.target.dataset.id] = {...element}
-            createCart()
-        } else if(e.target.classList.contains('rem-btn')) {
-            const element = cart[e.target.dataset.id]
-            element.amount--
-            if (element.amount === 0) {
-                delete cart[e.target.dataset.id]
+// AÑADIR PRODUCTO AL CARRITO
+    // Hacer click en "Comprar"
+        cards.addEventListener('click', (e) => addCartBTN(e))
+        const addCartBTN = (e) => {
+            if (e.target.classList.contains('buy')) {   
+                addCartAction(e.target.parentElement)
+            }
+            e.stopPropagation()
+        } 
+
+    //  Encontrar Producto
+        const findProduct = (productId) => {
+            const index = cart.findIndex(element => element.id === productId)
+            return index
+        }
+
+    // Agregar producto al carrito
+        const addCartAction = (object) => {
+            const cartProduct = {
+                id: object.id,
+                title: object.querySelector('h2').textContent,
+                prize: object.querySelector('p').textContent,
+                amount: 1
+            }
+            if (findProduct(cartProduct.id) >= 0) {
+                cart[findProduct(cartProduct.id)].amount++
+            } else {
+                cart.push(cartProduct)
             }
             createCart()
         }
 
-        e.stopPropagation()
-    }
+ // MOSTRAR CARRITO AL FINAL LA PÁGINA - Guardarlo en LocalStorage
+    // Crear lista de productos en el carrito
+        const items = document.getElementById('items')
+        const createCart = () => {
+            items.innerHTML = ''
+            cart.forEach( (element) => {
+                items.innerHTML += `
+                    <div>
+                        <tr>
+                            <th scope="row">${element.id}</th>
+                            <td>${element.title}</td>
+                            <td>${element.amount}</td>
+                            <td id="${element.id}">
+                                <button class="add-btn" id="add-btn">+</button>
+                                <button class="rem-btn" id="rem-btn">-</button>
+                            </td>
+                            <td><span>$ ${parseFloat(element.amount) * parseFloat(element.prize)}</span></td>
+                        </tr>
+                    </div>`
+            })
+            createFooter()
+            localStorage.setItem('cart', JSON.stringify(cart))
+        }
+
+    // Calcular precio del carrito 
+        const cartFooter = document.getElementById('cart-footer')
+        const createFooter = () => {
+            cartFooter.innerHTML = ''
+            if (cart.length === 0) {
+                cartFooter.innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
+                return
+            } else {
+                const nAmount = cart.reduce((acc, {amount}) => acc + amount, 0)
+                const nPrize = cart.reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
+                cartFooter.innerHTML = `
+                <div id="cart-footer">
+                    <th scope="row">PRODUCTOS EN EL CARRITO</th>
+                    <td>${nAmount}</td>
+                    <td>
+                        <button class="btn empty-btn btn-sm" id="empty-cart">
+                            vaciar carrito
+                        </button>
+                    </td>
+                    <td class="font-weight-bold">$ <span>${nPrize}</span></td>
+                </div>`
+            }
+    
+            // Vaciar Carrito
+            const btnEmptyCart = document.getElementById('empty-cart')
+            btnEmptyCart.addEventListener('click', () => {
+                cart = []
+                createCart()
+            })
+        }
+        createFooter()
+
+// AGREGAR / QUITAR PRODUCTOS DESDE EL CARRITO
+    items.addEventListener('click', (e) => btnAccion(e))
+        const btnAccion = (e) => {
+            cartItem = cart[findProduct(e.target.parentElement.id)]
+            if(e.target.classList.contains('add-btn')) {
+                cartItem.amount++
+                createCart()
+            } else if(e.target.classList.contains('rem-btn')) {
+                cartItem.amount--
+                if (cartItem.amount === 0) {
+                    cart.splice(findProduct(e.target.parentElement.id),1)
+                }
+                createCart()
+            }
+            e.stopPropagation()
+        }
