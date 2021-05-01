@@ -616,29 +616,38 @@ body {
 #store .card .ver-mas-btn:active {
   background-color: #fff;
 }
-#store .cart-title {
+
+#modal-cart {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#modal-cart .modal-content {
+  background-color: #000;
+  border: 1px solid #fff;
+  width: 160%;
+  margin: 30% -30%;
+}
+#modal-cart .modal-content .exit-btn {
+  position: relative;
+  left: 98%;
+  font-size: 1.2rem;
+  border: none;
+  background-color: transparent;
+}
+#modal-cart .modal-content .cart-title {
   color: #fff;
-  font-weight: 500;
-  font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.5rem;
   letter-spacing: 0.4rem;
-  margin: 3rem 0 1rem 0;
+  margin: 1rem 0 0.5rem 0;
+  text-align: center;
 }
-#store .table {
+#modal-cart .modal-content th, #modal-cart .modal-content td, #modal-cart .modal-content button {
   color: #fff;
+  text-align: left;
 }
-#store .table th {
-  font-weight: 500;
-}
-#store .line {
-  background-color: #fff;
-  height: 0.4rem;
-}
-#store #template-footer {
-  font-family: "Times New Roman", Times, serif;
-}
-#store .add-btn,
-#store .rem-btn,
-#store .empty-btn {
+#modal-cart .modal-content .add-btn,
+#modal-cart .modal-content .rem-btn,
+#modal-cart .modal-content .empty-btn {
   color: #fff;
   font-weight: 600;
   border: none;
@@ -649,29 +658,26 @@ body {
   border-radius: 10px;
   background-color: #CAA682;
 }
-#store .add-btn:hover,
-#store .rem-btn:hover,
-#store .empty-btn:hover {
+#modal-cart .modal-content .add-btn:hover,
+#modal-cart .modal-content .rem-btn:hover,
+#modal-cart .modal-content .empty-btn:hover {
   opacity: 80%;
   color: #000;
 }
-#store .add-btn:active,
-#store .rem-btn:active,
-#store .empty-btn:active {
+#modal-cart .modal-content .add-btn:active,
+#modal-cart .modal-content .rem-btn:active,
+#modal-cart .modal-content .empty-btn:active {
   background-color: #fff;
 }
-#store .rem-btn {
+#modal-cart .modal-content .rem-btn {
   padding: 0.2rem 0.6rem;
 }
-#store .empty-btn {
+#modal-cart .modal-content .empty-btn {
   font-weight: 400;
   font-size: 0.8rem;
   padding: 0.3rem 0.5rem;
 }
-#store .last-row {
-  padding-bottom: 8rem !important;
-}
-#store .cart-end {
+#modal-cart .modal-content .cart-end {
   border: none;
   background-color: #CAA682;
   border-radius: 30px;
@@ -681,12 +687,15 @@ body {
   font-size: 0.8rem;
   border-radius: 10px;
 }
-#store .cart-end:hover {
+#modal-cart .modal-content .cart-end:hover {
   opacity: 80%;
   color: #000;
 }
-#store .cart-end:active {
+#modal-cart .modal-content .cart-end:active {
   background-color: #fff;
+}
+#modal-cart .modal-content .text-end {
+  margin-bottom: 1rem;
 }
 
 /* MEDIA QUERIES */

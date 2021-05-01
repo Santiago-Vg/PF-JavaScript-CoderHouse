@@ -1,7 +1,7 @@
-// APP TIENDA ONLINE V.2
+// APP TIENDA ONLINE V.3
 
 // DECLARAR CARRITO
-    let cart = []
+let cart = []
 
 // CARGAR CONTENIDO
     document.addEventListener('DOMContentLoaded', () => {
@@ -39,33 +39,26 @@
                 <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
                 <h2 class="piece-name">${element.title}</h2>
                 <p class="piece-value">${element.prize}</p>
-                <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message">Comprar</button> 
+                <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message" onclick=addToCart(${element.id})>Comprar</button>
                 </div>`
         })
     }
 
 // AÑADIR PRODUCTO AL CARRITO
-    // Hacer click en "Comprar"
-        cards.addEventListener('click', (e) => addCartBTN(e))
-        const addCartBTN = (e) => {
-            if (e.target.classList.contains('buy')) {   
-                addCartAction(e.target.parentElement)
-            }
-            e.stopPropagation()
-        } 
-
     //  Encontrar Producto
         const findProduct = (productId) => {
             const index = cart.findIndex(element => element.id === productId)
             return index
         }
-
-    // Agregar producto al carrito
-        const addCartAction = (object) => {
+    //  Añadir Producto al Carrito
+    const addToCart = async (elementId) => {
+        try {
+            const res = await fetch('../api.json')
+            const data = await res.json()
             const cartProduct = {
-                id: object.id,
-                title: object.querySelector('h2').textContent,
-                prize: object.querySelector('p').textContent,
+                id: data[elementId - 1].id,
+                title: data[elementId - 1].title,
+                prize: data[elementId - 1].prize,
                 amount: 1
             }
             if (findProduct(cartProduct.id) >= 0) {
@@ -74,9 +67,22 @@
                 cart.push(cartProduct)
             }
             createCart()
+        } catch (error){
+            console.log(error);
+        }
+    }
+
+
+ // CREAR CARRITO - Guardarlo en LocalStorage
+    // Abrir y cerrar carrito (modal)
+        const cartModal = document.getElementById('modal-cart')
+        const openCartModal = () => {
+            cartModal.setAttribute("style", 'display: block;')
+        }
+        const closeCartModal = () => {
+            cartModal.removeAttribute("style")
         }
 
- // MOSTRAR CARRITO AL FINAL LA PÁGINA - Guardarlo en LocalStorage
     // Crear lista de productos en el carrito
         const items = document.getElementById('items')
         const createCart = () => {
@@ -89,8 +95,8 @@
                             <td>${element.title}</td>
                             <td>${element.amount}</td>
                             <td id="${element.id}">
-                                <button class="add-btn" id="add-btn">+</button>
-                                <button class="rem-btn" id="rem-btn">-</button>
+                                <button class="add-btn" onclick=addBTN(${element.id})>+</button>
+                                <button class="rem-btn" onclick=remBTN(${element.id})>-</button>
                             </td>
                             <td><span>$ ${parseFloat(element.amount) * parseFloat(element.prize)}</span></td>
                         </tr>
@@ -100,7 +106,7 @@
             localStorage.setItem('cart', JSON.stringify(cart))
         }
 
-    // Calcular precio del carrito 
+    // Calcular precio del carrito
         const cartFooter = document.getElementById('cart-footer')
         const createFooter = () => {
             cartFooter.innerHTML = ''
@@ -115,36 +121,33 @@
                     <th scope="row">PRODUCTOS EN EL CARRITO</th>
                     <td>${nAmount}</td>
                     <td>
-                        <button class="btn empty-btn btn-sm" id="empty-cart">
+                        <button class="btn empty-btn btn-sm" onclick=emptyCart()>
                             vaciar carrito
                         </button>
                     </td>
                     <td class="font-weight-bold">$ <span>${nPrize}</span></td>
                 </div>`
             }
-    
-            // Vaciar Carrito
-            const btnEmptyCart = document.getElementById('empty-cart')
-            btnEmptyCart.addEventListener('click', () => {
-                cart = []
-                createCart()
-            })
         }
         createFooter()
 
-// AGREGAR / QUITAR PRODUCTOS DESDE EL CARRITO
-    items.addEventListener('click', (e) => btnAccion(e))
-        const btnAccion = (e) => {
-            cartItem = cart[findProduct(e.target.parentElement.id)]
-            if(e.target.classList.contains('add-btn')) {
-                cartItem.amount++
-                createCart()
-            } else if(e.target.classList.contains('rem-btn')) {
-                cartItem.amount--
-                if (cartItem.amount === 0) {
-                    cart.splice(findProduct(e.target.parentElement.id),1)
-                }
-                createCart()
+    // Vaciar Carrito
+    const emptyCart = () => {
+        cart = []
+        createCart()
+    }
+
+    // Agregar o quitar productos desde el carrito (botones +/-)
+        const addBTN = (elementId) => {
+            cartItem = cart[findProduct(elementId)]
+            cartItem.amount++
+            createCart()
+        }
+        const remBTN = (elementId) => {
+            cartItem = cart[findProduct(elementId)]
+            cartItem.amount--
+            if (cartItem.amount === 0) {
+                cart.splice(findProduct(elementId),1)
             }
-            e.stopPropagation()
+            createCart()
         }
