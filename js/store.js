@@ -109,8 +109,10 @@ let cart = []
             $('#cart-footer').text('')
             if (cart.length === 0) {
                 $('#cart-footer')[0].innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
+                $('.text-end').attr("style", "display: none;")
                 return
             } else {
+                $('.text-end').attr("style", "")
                 const nAmount = cart.reduce((acc, {amount}) => acc + amount, 0)
                 const nPrize = cart.reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
                 $('#cart-footer')[0].innerHTML = `
