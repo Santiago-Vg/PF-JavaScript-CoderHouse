@@ -7,12 +7,13 @@
 }
 
 body {
-    font-family: montserrat, sans-serif;
+    font-family: Montserrat, sans-serif;
 }
 
 #modal-message .modal-content,
 #modal-message2 .modal-content,
-#modal-message3 .modal-content {
+#modal-message3 .modal-content,
+#discApplier .modal-content {
     background-color: $txt-color-dark;
     margin: 40% auto;
     border: 1px solid $txt-color-light;
@@ -65,3 +66,58 @@ body {
         }
     }
 }
+
+#discApplier {
+    background-color: rgba(0, 0, 0, 0.7);
+
+    .modal-content {
+        margin-top: 15%;
+    }
+    .modal-body {
+        p {
+            font-weight: 600;
+            font-size: 1.1rem;
+    
+            &::before {
+                content: "Calcular Descuento";
+                display: block;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                color: $txt-color-highlights;
+                font-size: 2rem;
+                font-weight: 600;    
+            }
+        }
+
+        .cart-end, .cart-end-cancel {
+        border: 1px solid $btn-color;
+        background-color: $btn-color;
+        border-radius: 10px;
+        padding: 0.5rem 1.5rem;
+        text-decoration: none;
+        color: $txt-color-light;
+        font-size: .8rem;
+    
+        &:hover {
+            opacity: 80%;
+            color: $hover-color-dark;
+        }
+    
+        &:active {
+            background-color: $txt-color-light;
+        }
+        } 
+    
+        .cart-end-cancel {
+            background-color: transparent;
+            padding: 0.5rem 1.2rem;
+            
+            &:hover {
+                opacity: 70%;
+                color: $txt-color-light;
+                border: 2px solid $txt-color-light;
+            }
+        }
+    }
+}
+

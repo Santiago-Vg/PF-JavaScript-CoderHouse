@@ -1,10 +1,10 @@
-// APP TIENDA ONLINE V.3
+// APP TIENDA ONLINE V.4 (con jQuery)
 
 // DECLARAR CARRITO
 let cart = []
 
 // CARGAR CONTENIDO
-    document.addEventListener('DOMContentLoaded', () => {
+    $(function() {
         fetchData()
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
@@ -17,8 +17,7 @@ let cart = []
         try {
             const res = await fetch('../api.json')
             const data = await res.json()
-            const collections = document.getElementById('collections')
-            const dataFiltrada = data.filter(el => el.collection === collections.value)
+            const dataFiltrada = data.filter(el => el.collection === $('#collections').val())
             if (dataFiltrada.length === 0) {
                 createCards(data)
             } else {
@@ -30,17 +29,16 @@ let cart = []
     }
 
 // CREAR TARJETAS DE PRODUCTOS
-    const cards = document.getElementById('cards')
     const createCards = (data) => {
-        cards.innerHTML = ''
+        $('#cards').text('')
         data.forEach(element => {
-            cards.innerHTML += `
-                <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
-                <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
-                <h2 class="piece-name">${element.title}</h2>
-                <p class="piece-value">${element.prize}</p>
-                <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message" onclick=addToCart(${element.id})>Comprar</button>
-                </div>`
+            $('#cards').append(`
+            <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
+            <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
+            <h2 class="piece-name">${element.title}</h2>
+            <p class="piece-value">${element.prize}</p>
+            <button class="btn ver-mas-btn buy" data-bs-toggle="modal" data-bs-target="#modal-message" onclick=addToCart(${element.id})>Comprar</button>
+            </div>`)
         })
     }
 
@@ -50,6 +48,7 @@ let cart = []
             const index = cart.findIndex(element => element.id === productId)
             return index
         }
+
     //  Añadir Producto al Carrito
     const addToCart = async (elementId) => {
         try {
@@ -58,6 +57,7 @@ let cart = []
             const cartProduct = {
                 id: data[elementId - 1].id,
                 title: data[elementId - 1].title,
+                image: data[elementId - 1].thumbnailUrl,
                 prize: data[elementId - 1].prize,
                 amount: 1
             }
@@ -72,27 +72,25 @@ let cart = []
         }
     }
 
-
  // CREAR CARRITO - Guardarlo en LocalStorage
     // Abrir y cerrar carrito (modal)
-        const cartModal = document.getElementById('modal-cart')
-        const openCartModal = () => {
-            cartModal.setAttribute("style", 'display: block;')
-        }
-        const closeCartModal = () => {
-            cartModal.removeAttribute("style")
-        }
+        $('#cart-icon').on('click', function(){
+            $('#modal-cart').attr("style", 'display: block;')
+        })
+        
+        $('#cart-exitBtn').on('click', function(){
+            $('#modal-cart').attr("style", 'display: none;')
+        })
 
     // Crear lista de productos en el carrito
-        const items = document.getElementById('items')
         const createCart = () => {
-            items.innerHTML = ''
+            $('#items').text('')
             cart.forEach( (element) => {
-                items.innerHTML += `
-                    <div>
+                $('#items')[0].innerHTML +=
+                    `<div>
                         <tr>
                             <th scope="row">${element.id}</th>
-                            <td>${element.title}</td>
+                            <td class="prod-td"><img class="cart-img" src="${element.image}" alt="">${element.title}</td>
                             <td>${element.amount}</td>
                             <td id="${element.id}">
                                 <button class="add-btn" onclick=addBTN(${element.id})>+</button>
@@ -100,23 +98,22 @@ let cart = []
                             </td>
                             <td><span>$ ${parseFloat(element.amount) * parseFloat(element.prize)}</span></td>
                         </tr>
-                    </div>`
+                    </div>` 
             })
             createFooter()
             localStorage.setItem('cart', JSON.stringify(cart))
         }
 
-    // Calcular precio del carrito
-        const cartFooter = document.getElementById('cart-footer')
+    // Calcular precio del 
         const createFooter = () => {
-            cartFooter.innerHTML = ''
+            $('#cart-footer').text('')
             if (cart.length === 0) {
-                cartFooter.innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
+                $('#cart-footer')[0].innerHTML = '<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>'
                 return
             } else {
                 const nAmount = cart.reduce((acc, {amount}) => acc + amount, 0)
                 const nPrize = cart.reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
-                cartFooter.innerHTML = `
+                $('#cart-footer')[0].innerHTML = `
                 <div id="cart-footer">
                     <th scope="row">PRODUCTOS EN EL CARRITO</th>
                     <td>${nAmount}</td>
@@ -125,8 +122,9 @@ let cart = []
                             vaciar carrito
                         </button>
                     </td>
-                    <td class="font-weight-bold">$ <span>${nPrize}</span></td>
-                </div>`
+                    <td>$ <span id="final-prize">${nPrize}</span></td>
+                </div>
+                `
             }
         }
         createFooter()
@@ -151,3 +149,29 @@ let cart = []
             }
             createCart()
         }
+
+// APLICAR DESCUENTOS
+    // Abir y Cerrar modal para aplicar descuentos
+    $('#discModal').on('click', function(){
+        $('#discApplier').attr("style", 'display: block;')
+    })
+
+    $('#discBtnCancel').on('click', function(){
+        $('#discApplier').attr('style', 'display: none;')
+    })
+
+    // Generar descuentos según cupón
+    $('#discBtnApply').on('click', function(){
+        createCart()
+        let cartValue = $('#final-prize')
+        if ($('#disc-macro')[0].checked) {
+            cartValue.text(parseInt(cartValue.text()) * 0.9)
+        } else if ($('#disc-galicia')[0].checked) {
+            cartValue.text(parseInt(cartValue.text()) * 0.75)
+        } else if ($('#disc-santander')[0].checked) {
+            cartValue.text(parseInt(cartValue.text()) * 0.5)
+        } else {
+            cartValue.text(cartValue.text())
+        }
+        $('#discApplier').attr('style', 'display: none;')
+    })

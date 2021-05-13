@@ -71,7 +71,7 @@
                             </li>
                         </ul>
                         <span class="navbar-text">
-                            <a onclick=openCartModal()><i
+                            <a id="cart-icon"><i
                                     class="fas fa-shopping-basket"></i></a>
                             <a data-bs-toggle="modal" data-bs-target="#modal-message2"><i
                                     class="fas fa-search px-3"></i></a>
@@ -111,10 +111,10 @@
                                     <div class="modal-body">
                                         <!-- Contenido del Carrito -->
                                         <table class="table">
-                                            <button class="exit-btn" onclick=closeCartModal()>x</button>
+                                            <button class="exit-btn" id="cart-exitBtn">x</button>
                                             <h3 class="cart-title">-- CARRITO --</h3>
                                             <hr class="line">
-                                            <thead>
+                                            <thead class="">
                                                 <tr>
                                                     <th scope="col"># Id</th>
                                                     <th scope="col">Producto</th>
@@ -122,7 +122,6 @@
                                                     <th scope="col">Agregar / Quitar</th>
                                                     <th scope="col">Total</th>
                                                 </tr>
-                                            </thead>
                                             <tbody id="items"></tbody>
                                             <tfoot>
                                                 <tr id="cart-footer"></tr>
@@ -131,6 +130,7 @@
                                         <!-- Finalizar Compra -->
                                         <div class="row text-end">
                                             <div class="col-12">
+                                                <a id="discModal" class="cart-end">Tengo un Cupón</a>
                                                 <a data-bs-toggle="modal" data-bs-target="#modal-message3" class="cart-end">Finalizar compra</a>
                                             </div>
                                         </div>
@@ -183,6 +183,39 @@
                 </div>
             </div>
         </section>
+        <!-- Aplicar Descuento -->
+        <section class="hidden-modal">
+            <div class="modal" id="discApplier" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                                <p class="discount-title col-12 pb-3">¿Dé que banco es tu cupón?</p>
+                                <div class="col-12 px-3 my-4">
+                                    <input type="radio" name="discount" id="disc-macro" class="mx-1" value="macro" checked="checked"> 
+                                    <label for="discount-macro">Banco Macro (10%).</label>
+                                    
+                                </div>
+                                <div class="col-12 px-3 my-4">
+                                    <input type="radio" name="discount" id="disc-galicia" class="mx-1" value="galicia"> 
+                                    <label for="discount-galicia">Banco Galicia (25%).</label>
+                                </div>
+                                <div class="col-12 px-3 my-4">
+                                    <input type="radio" name="discount" id="disc-santander" class="mx-1" value="santander">
+                                    <label for="discount-santander">Banco Santander (50%).</label> 
+                                </div>
+                                <div class="col-12 px-3 my-4">
+                                    <input type="radio" name="discount" id="disc-none" class="mx-1" value="none">
+                                    <label for="discount-none">No tengo un cupón.</label> 
+                                </div>
+                                <div class="col-12 text-center mt-5 mb-3">
+                                    <a class="cart-end-cancel text-center" id="discBtnCancel">Cancelar</a>
+                                    <a class="cart-end text-center" id="discBtnApply">Aplicar</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     <!-- Fin - Mensajes (Formato: Modal) -->
 
     <!-- Footer -->
@@ -202,6 +235,7 @@
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous">
     </script>
     <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="../js/store.js"></script>
     <script src="../js/scripts.js"></script>
 </body>

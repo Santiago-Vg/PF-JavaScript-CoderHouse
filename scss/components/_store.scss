@@ -106,14 +106,24 @@
 
 #modal-cart {
     background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+
+    .modal-dialog {
+        overflow-y: initial !important;
+    }
 
     .modal-content {
         background-color: $txt-color-dark;
         border: 1px solid $txt-color-light;
         width: 160%;
-        margin: 30% -30%;
+        margin: 20% -30%;
 
-    
+        .modal-body {
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
         .exit-btn {
             position: relative;
             left: 98%;
@@ -174,9 +184,31 @@
             @include btn-config (.8rem);
             border-radius: 10px;
         }
+
+        #discModal {
+            background-color: transparent;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid $btn-color;
+                    
+                &:hover {
+                    opacity: 70%;
+                    color: $txt-color-light;
+                    border: 2px solid $txt-color-light;
+                }
+        }
     
         .text-end {
             margin-bottom: 1rem;
         }
+
+        .cart-img {
+            width: 7%;
+            margin-right: .5rem;
+        }
+
+        .prod-td {
+            width: 40%
+        }
     }
 }
+

@@ -8,12 +8,13 @@
 }
 
 body {
-  font-family: montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 #modal-message .modal-content,
 #modal-message2 .modal-content,
-#modal-message3 .modal-content {
+#modal-message3 .modal-content,
+#discApplier .modal-content {
   background-color: #000;
   margin: 40% auto;
   border: 1px solid #fff;
@@ -21,13 +22,15 @@ body {
 }
 #modal-message .modal-content p,
 #modal-message2 .modal-content p,
-#modal-message3 .modal-content p {
+#modal-message3 .modal-content p,
+#discApplier .modal-content p {
   color: #fff;
   text-align: center;
 }
 #modal-message .modal-content p::before,
 #modal-message2 .modal-content p::before,
-#modal-message3 .modal-content p::before {
+#modal-message3 .modal-content p::before,
+#discApplier .modal-content p::before {
   content: "¡Producto Añadido!";
   display: block;
   padding-top: 1rem;
@@ -38,7 +41,8 @@ body {
 }
 #modal-message .modal-content label,
 #modal-message2 .modal-content label,
-#modal-message3 .modal-content label {
+#modal-message3 .modal-content label,
+#discApplier .modal-content label {
   color: #fff;
   text-align: center;
 }
@@ -61,6 +65,51 @@ body {
   color: #CAA682;
   font-size: 2rem;
   font-weight: 600;
+}
+
+#discApplier {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#discApplier .modal-content {
+  margin-top: 15%;
+}
+#discApplier .modal-body p {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+#discApplier .modal-body p::before {
+  content: "Calcular Descuento";
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #CAA682;
+  font-size: 2rem;
+  font-weight: 600;
+}
+#discApplier .modal-body .cart-end, #discApplier .modal-body .cart-end-cancel {
+  border: 1px solid #CAA682;
+  background-color: #CAA682;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.8rem;
+}
+#discApplier .modal-body .cart-end:hover, #discApplier .modal-body .cart-end-cancel:hover {
+  opacity: 80%;
+  color: #000;
+}
+#discApplier .modal-body .cart-end:active, #discApplier .modal-body .cart-end-cancel:active {
+  background-color: #fff;
+}
+#discApplier .modal-body .cart-end-cancel {
+  background-color: transparent;
+  padding: 0.5rem 1.2rem;
+}
+#discApplier .modal-body .cart-end-cancel:hover {
+  opacity: 70%;
+  color: #fff;
+  border: 2px solid #fff;
 }
 
 /* Extends */
@@ -619,12 +668,21 @@ body {
 
 #modal-cart {
   background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+}
+#modal-cart .modal-dialog {
+  overflow-y: initial !important;
 }
 #modal-cart .modal-content {
   background-color: #000;
   border: 1px solid #fff;
   width: 160%;
-  margin: 30% -30%;
+  margin: 20% -30%;
+}
+#modal-cart .modal-content .modal-body {
+  max-height: 75vh;
+  overflow-y: auto;
 }
 #modal-cart .modal-content .exit-btn {
   position: relative;
@@ -694,8 +752,25 @@ body {
 #modal-cart .modal-content .cart-end:active {
   background-color: #fff;
 }
+#modal-cart .modal-content #discModal {
+  background-color: transparent;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #CAA682;
+}
+#modal-cart .modal-content #discModal:hover {
+  opacity: 70%;
+  color: #fff;
+  border: 2px solid #fff;
+}
 #modal-cart .modal-content .text-end {
   margin-bottom: 1rem;
+}
+#modal-cart .modal-content .cart-img {
+  width: 7%;
+  margin-right: 0.5rem;
+}
+#modal-cart .modal-content .prod-td {
+  width: 40%;
 }
 
 /* MEDIA QUERIES */
