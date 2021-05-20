@@ -10,6 +10,7 @@
             }
         }
     }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -20,6 +21,11 @@
         img {
             filter: grayscale(0) brightness(1);
         }
+    }
+
+    .filter-container {
+        margin: 3rem 0 2rem 0 !important;
+        text-align: center !important;
     }
 }
 

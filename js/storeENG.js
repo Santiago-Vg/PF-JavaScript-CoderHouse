@@ -36,9 +36,9 @@ let cart = []
             $('#cards').append(`
                 <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
                     <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
-                    <h2 class="piece-name">${element.title}</h2>
+                    <h2 class="piece-name">${element.titleEng}</h2>
                     <p class="piece-value">${element.prize}</p>
-                    <button class="btn ver-mas-btn buy" value=${element.id}>Comprar</button>
+                    <button class="btn ver-mas-btn buy" value=${element.id}>Add to Cart</button>
                 </div>`)
         })
     }
@@ -114,7 +114,7 @@ let cart = []
                     `<div>
                         <tr>
                             <th scope="row">${element.id}</th>
-                            <td class="prod-td"><img class="cart-img" src="${element.image}" alt="">${element.title}</td>
+                            <td class="prod-td"><img class="cart-img" src="${element.image}" alt="">${element.titleEng}</td>
                             <td>${element.amount}</td>
                             <td id="${element.id}">
                                 <button class="add-btn" value="${element.id}">+</button>
@@ -142,7 +142,7 @@ let cart = []
         const createFooter = () => {
             $('#cart-footer').text('')
             if (cart.length === 0) {
-                $('#cart-footer').html('<th scope="row" colspan="5">CARRITO VACÍO - Hacé click en comprar para añadir tu producto!</th>')
+                $('#cart-footer').html('<th scope="row" colspan="5">YOUR CART IS EMPTY - Click on "Add to Cart" to start buying!</th>')
                 $('#discounts').hide()
                 $('.text-end').hide()
                 return
@@ -151,9 +151,9 @@ let cart = []
                 const nPrize = cart.reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
                 $('#cart-footer').html(`
                     <div id="cart-footer">
-                        <th scope="row">PRODUCTOS EN EL CARRITO</th>
+                        <th scope="row">TOTAL PRODUCTS</th>
                         <td>${nAmount}</td>
-                        <td><button class="btn empty-btn btn-sm" id="emptyCart"> vaciar carrito</button></td>
+                        <td><button class="btn empty-btn btn-sm" id="emptyCart"> empty cart</button></td>
                         <td>$ <span id="cart-prize">${nPrize}</span></td>
                     </div>
                     `)
@@ -222,7 +222,7 @@ let cart = []
                         <div id="cart-footer">
                             <td></td>
                             <td></td>
-                            <th scope="row">Total (Cupón Aplicado)</th>
+                            <th scope="row">Total (Coupon Applied)</th>
                             <td>$ <span id="new-prize">${discounts[checkedDiscount]}</span></td>
                         </div>
                         `)

@@ -1,0 +1,129 @@
+#modal-cart {
+    @extend %fade-in-bck;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+
+    .modal-dialog {
+        overflow-y: initial !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background-color: $txt-color-dark;
+        border: 1px solid $txt-color-light;
+        min-width: 65vw;
+        margin-top: 10%;
+        
+        .modal-header {
+            display: flex;
+            justify-content: center;
+
+            .cart-title {
+                color: $txt-color-light;
+                font-weight: 600;
+                font-size: 1.5rem;
+                letter-spacing: .4rem;
+                margin: 1rem 0 .5rem 0;
+            }
+        }
+
+        .modal-body {
+            max-height: 55vh;
+            overflow-y: auto;
+
+            .table {
+                overflow-x: auto;
+            }
+
+            th, td, button {
+                color: $txt-color-light;
+                text-align: left;
+            }
+
+            .cart-img {
+                width: 2vw;
+                margin-right: .5rem;
+            }
+    
+            .prod-td {
+                width: 40%
+            }
+        
+            .add-btn,
+            .rem-btn,
+            .empty-btn {      
+                color: $txt-color-light;
+                font-weight: 600;
+                border: none;
+                font-size: 1rem;
+                text-decoration: none;
+                padding: .2rem .5rem;
+                border: 1px solid $txt-color-highlights;
+                border-radius: 10px;
+                background-color: $txt-color-highlights;
+        
+                &:hover {
+                    opacity: 80%;
+                    color: $hover-color-dark;
+                }
+            
+                &:active {
+                    background-color: $txt-color-light;
+                }
+            }
+        
+            .rem-btn {
+                padding: .2rem .6rem;
+            }
+        
+            .empty-btn {
+                font-weight: 400;
+                font-size: .8rem;
+                padding: .3rem .5rem;
+            }
+
+            #cart-footer {
+                #cart-prize {
+                    font-weight: 700;
+                }
+                .old-prize {
+                    font-weight: 400 !important;
+                    text-decoration: line-through;
+                }
+            }
+    
+            #discounts {
+                #new-prize{
+                    font-weight: 700;
+                } 
+            }
+        }
+
+        .modal-footer{
+            .text-end {
+                margin-bottom: 1rem;
+
+                .cart-end {
+                    @include btn-config (.8rem);
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        #discModal {
+            background-color: transparent;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid $btn-color;
+                    
+                &:hover {
+                    opacity: 70%;
+                    color: $txt-color-light;
+                    border: 2px solid $txt-color-light;
+                }
+        }
+    }
+}
