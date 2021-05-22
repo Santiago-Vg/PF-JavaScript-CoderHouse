@@ -66,7 +66,7 @@ let cart = []
     //  Añadir Producto al Carrito
         $(document).on('click', '.buy', function(){
             addToCart(this.value);
-            $('#discounts').hide()
+            $('#discounts').attr("style", "display: none;")
         })
 
         const addToCart = (elementId) => {

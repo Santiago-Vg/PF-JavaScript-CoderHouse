@@ -66,7 +66,7 @@ let cart = []
     //  Añadir Producto al Carrito
         $(document).on('click', '.buy', function(){
             addToCart(this.value);
-            $('#discounts').hide()
+            $('#discounts').attr("style", "display: none;")
         })
 
         const addToCart = (elementId) => {
@@ -166,10 +166,14 @@ let cart = []
 
     // Vaciar Carrito
         $(document).on('click', '#emptyCart', function(){
+           emptyCart()
+        })
+
+        const emptyCart = () => {
             cart = []
             createCart()
             showCartLength()
-        })
+        }
 
     // Agregar o quitar productos desde el carrito (botones +/-)
         $(document).on('click', '.add-btn', function(){
@@ -247,4 +251,6 @@ let cart = []
         $(document).on('click', '#thanks-modal', function(){
             $('#thanks-modal').hide()
             $('#modal-cart').hide()
+            emptyCart()
+            window.location.href = "../index.html";
         })
