@@ -37,7 +37,7 @@ let cart = []
                 <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
                     <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
                     <h2 class="piece-name">${element.titleEng}</h2>
-                    <p class="piece-value">${element.prize}</p>
+                    <p class="piece-value">${element.price}</p>
                     <button class="btn ver-mas-btn buy" value=${element.id}>Add to Cart</button>
                 </div>`)
         })
@@ -81,7 +81,7 @@ let cart = []
                         title: products[productId].title,
                         titleEng: products[productId].titleEng,
                         image: products[productId].thumbnailUrl,
-                        prize: products[productId].prize,
+                        price: products[productId].price,
                         amount: 1
                     }
                     if (productIndex(cartProduct.id) >= 0) {
@@ -121,7 +121,7 @@ let cart = []
                                 <button class="add-btn" value="${element.id}">+</button>
                                 <button class="rem-btn" value="${element.id}")>-</button>
                             </td>
-                            <td><span>$ ${parseFloat(element.amount) * parseFloat(element.prize)}</span></td>
+                            <td><span>$ ${parseFloat(element.amount) * parseFloat(element.price)}</span></td>
                         </tr>
                     </div>`
             })
@@ -149,13 +149,13 @@ let cart = []
                 return
             } else {
                 const nAmount = cart.reduce((acc, {amount}) => acc + amount, 0)
-                const nPrize = cart.reduce((acc, {amount, prize}) => acc + parseFloat(amount) * parseFloat(prize), 0)
+                const nPrice = cart.reduce((acc, {amount, price}) => acc + parseFloat(amount) * parseFloat(price), 0)
                 $('#cart-footer').html(`
                     <div id="cart-footer">
                         <th scope="row">TOTAL PRODUCTS</th>
                         <td>${nAmount}</td>
                         <td><button class="btn empty-btn btn-sm" id="emptyCart"> empty cart</button></td>
-                        <td>$ <span id="cart-prize">${nPrize}</span></td>
+                        <td>$ <span id="cart-prize">${nPrice}</span></td>
                     </div>
                     `)
                 $('#discounts').show()
@@ -210,13 +210,13 @@ let cart = []
 
         const discGenerator = () => {
             createCart()
-            let cartPrize =  parseInt($('#cart-prize').text())
+            let cartPrice =  parseInt($('#cart-prize').text())
             const checkedDiscount = $('input[name="discount"]:checked').val()
             const discounts = {
-                'macro': cartPrize * 0.9,
-                'galicia': cartPrize * 0.75,
-                'santander': cartPrize * 0.5,
-                'none': cartPrize
+                'macro': cartPrice * 0.9,
+                'galicia': cartPrice * 0.75,
+                'santander': cartPrice * 0.5,
+                'none': cartPrice
             }
             $('#cart-prize').addClass('old-prize')
             $('#discounts').html(`
