@@ -1,6 +1,6 @@
 [
     {
-        "prize": 4980,
+        "price": 4980,
         "id": 1,
         "title": "Corset Brönte White",
         "titleEng": "Corset Brönte White",
@@ -8,7 +8,7 @@
         "thumbnailUrl": "../images/store/img1.jpg"
     }, 
     {
-        "prize": 3800,
+        "price": 3800,
         "id": 2,
         "title": "Corset Storni B&W",
         "titleEng": "Corset Storni B&W",
@@ -16,7 +16,7 @@
         "thumbnailUrl": "../images/store/img2.jpg"
     }, 
     {
-        "prize": 4980,
+        "price": 4980,
         "id": 3,
         "title": "Corset Brönte Black",
         "titleEng": "Corset Brönte Black",
@@ -24,7 +24,7 @@
         "thumbnailUrl": "../images/store/img3.jpg"
     }, 
     {
-        "prize": 3200,
+        "price": 3200,
         "id": 4,
         "title": "Blusa Didion Black",
         "titleEng": "Didion Blouse Black",
@@ -32,7 +32,7 @@
         "thumbnailUrl": "../images/store/img4.jpg"
     },
     {
-        "prize": 3450,
+        "price": 3450,
         "id": 5,
         "title": "Top One Turquesa",
         "titleEng": "Top One Turquoise",
@@ -40,7 +40,7 @@
         "thumbnailUrl": "../images/store/img5.jpg"
     }, 
     {
-        "prize": 3650,
+        "price": 3650,
         "id": 6,
         "title": "Top Block Turquesa",
         "titleEng": "Top Block Turquoise",
@@ -48,7 +48,7 @@
         "thumbnailUrl": "../images/store/img6.jpg"
     }, 
     {
-        "prize": 3850,
+        "price": 3850,
         "id": 7,
         "title": "Top Heart Mix",
         "titleEng": "Top Heart Mix",
@@ -56,7 +56,7 @@
         "thumbnailUrl": "../images/store/img7.jpg"
     }, 
     {
-        "prize": 3450,
+        "price": 3450,
         "id": 8,
         "title": "Top One Naranja",
         "titleEng": "Top One Orange",
@@ -64,7 +64,7 @@
         "thumbnailUrl": "../images/store/img8.jpg"
     }, 
     {
-        "prize": 699,
+        "price": 699,
         "id": 9,
         "title": "Aros Hanger",
         "titleEng": "Hanger Earrings",
@@ -72,7 +72,7 @@
         "thumbnailUrl": "../images/store/img9.jpg"
     }, 
     {
-        "prize": 2900,
+        "price": 2900,
         "id": 10,
         "title": "Blusa Lane",
         "titleEng": "Lane Blouse",
@@ -80,7 +80,7 @@
         "thumbnailUrl": "../images/store/img10.jpg"
     }, 
     {
-        "prize": 4690,
+        "price": 4690,
         "id": 11,
         "title": "Saco Rotary",
         "titleEng": "Rotary Jacket",
@@ -88,7 +88,7 @@
         "thumbnailUrl": "../images/store/img11.jpg"
     }, 
     {
-        "prize": 480,
+        "price": 480,
         "id": 12,
         "title": "Vincha Stereo",
         "titleEng": "Stereo Headband",
@@ -96,7 +96,7 @@
         "thumbnailUrl": "../images/store/img12.jpg"
     }, 
     {
-        "prize": 699,
+        "price": 699,
         "id": 13,
         "title": "NewHangers Gold",
         "titleEng": "NewHangers Gold",
@@ -104,7 +104,7 @@
         "thumbnailUrl": "../images/store/img14.jpg"
     }, 
     {
-        "prize": 699,
+        "price": 699,
         "id": 14,
         "title": "NewHangers Orange",
         "titleEng": "NewHangers Orange",
@@ -112,7 +112,7 @@
         "thumbnailUrl": "../images/store/img13.jpg"
     }, 
     {
-        "prize": 699,
+        "price": 699,
         "id": 15,
         "title": "NewHangers Jungle",
         "titleEng": "NewHangers Jungle",
@@ -120,7 +120,7 @@
         "thumbnailUrl": "../images/store/img15.jpg"
     }, 
     {
-        "prize": 699,
+        "price": 699,
         "id": 16,
         "title": "NewHangers Metal",
         "titleEng": "NewHangers Metal",
