@@ -247,4 +247,6 @@ let cart = []
         $(document).on('click', '#thanks-modal', function(){
             $('#thanks-modal').hide()
             $('#modal-cart').hide()
+            emptyCart()
+            window.location.href = "../index.html";
         })
