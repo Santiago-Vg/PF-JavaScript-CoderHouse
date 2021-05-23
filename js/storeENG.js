@@ -1,4 +1,4 @@
-// APP TIENDA ONLINE V.5 (con jQuery)
+// APP TIENDA ONLINE V.5 (con jQuery) - ENG
 
 // DECLARAR CARRITO
 let cart = []
