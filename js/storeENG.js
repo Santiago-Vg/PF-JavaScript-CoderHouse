@@ -166,10 +166,14 @@ let cart = []
 
     // Vaciar Carrito
         $(document).on('click', '#emptyCart', function(){
+            emptyCart()
+        })
+
+        const emptyCart = () => {
             cart = []
             createCart()
             showCartLength()
-        })
+        }
 
     // Agregar o quitar productos desde el carrito (botones +/-)
         $(document).on('click', '.add-btn', function(){
@@ -248,5 +252,5 @@ let cart = []
             $('#thanks-modal').hide()
             $('#modal-cart').hide()
             emptyCart()
-            window.location.href = "../index.html";
+            window.location.href = "../index.html"
         })
