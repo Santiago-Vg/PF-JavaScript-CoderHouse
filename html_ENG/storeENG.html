@@ -66,8 +66,8 @@
                             </li>
                         </ul>
                         <span class="navbar-text">
-                            <a href="#store-tit" class="cart-tooltip"></a>
-                            <a id="cart-icon"><i class="fas fa-shopping-basket"></i></a>
+                            <a href="#store-tit" class="cart-tooltip" onclick="showCart()"></a>
+                            <a id="cart-icon" onclick="showCart()"><i class="fas fa-shopping-basket"></i></a>
                             <a href="#store-tit" class="tienda-btn">store</a>
                         </span>
                     </div>
@@ -93,7 +93,7 @@
                             <option value="X Meets Cloter">X Meets Cloter</option>
                             <option value="The New Hangers">The New Hangers</option>
                         </select>
-                        <button id="product-filter" class="col-lg-1 col-md-12 col-10">Filter</button>
+                        <button id="product-filter" class="col-lg-1 col-md-12 col-10" onclick="fetchData()">Filter</button>
                     </div>
                 </div>
                 <!-- Productos -->
@@ -105,7 +105,7 @@
 
     <!-- Carrito -->
     <section class="hidden-modal col-12">
-        <div class="modal .modal-lg" id="modal-cart" tabindex="-1">
+        <div class="modal .modal-lg" id="modal-cart" tabindex="-1" onclick="closeCart(event)">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Contenido del Carrito -->
@@ -132,8 +132,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="text-end ">
-                            <a id="discModal" class="cart-end">I have a Coupon</a>
-                            <a id="endPurchase" class="cart-end">Stop Shopping</a>
+                            <a id="discModal" onclick="openDiscModal()" class="cart-end">I have a Coupon</a>
+                            <a id="endPurchase" onclick="openModal(thanksModal)" class="cart-end">Stop Shopping</a>
                         </div>
                     </div>
                     <!-- Fin -- Contenido del Carrito -->
@@ -145,7 +145,7 @@
 
     <!-- Aplicador de Descuentos -->
     <section class="hidden-modal">
-        <div class="modal" id="discApplier" tabindex="-1">
+        <div class="modal" id="discApplier" onclick="closeDiscModal(event)" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -167,8 +167,8 @@
                                 <label for="discNone">I don't have a coupon.</label> 
                             </div>
                             <div class="col-12 text-center mt-5 mb-3">
-                                <a class="cart-end-cancel text-center" id="discBtnCancel">Cancel</a>
-                                <a class="cart-end text-center" id="discBtnApply">Apply</a>
+                                <a class="cart-end-cancel text-center" id="discBtnCancel" onclick="closeDiscModal(event)">Cancel</a>
+                                <a class="cart-end text-center" id="discBtnApply" onclick="discGenerator()">Apply</a>
                             </div>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
     <!-- Mensajes (Formato: Modal) -->
         <!-- Modal: Producto Añadido -->
         <section class="hidden-modal">
-            <div class="modal" id="addProduct-modal" tabindex="-1"> 
+            <div class="modal" id="addProduct-modal" tabindex="-1" onclick="closeModal(addProductModal)"> 
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -192,7 +192,7 @@
         </section>
         <!-- Compra Finalizada -->
         <section class="hidden-modal">
-            <div class="modal" id="thanks-modal" tabindex="-1">
+            <div class="modal" id="thanks-modal" onclick="closeThanksModal()" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -206,7 +206,7 @@
 
     <!-- Footer -->
     <footer>
-        <h6 class="container-fluid footer text-center py-3">© COPYRIGHT CRUXSTUDIO - 2021. TODOS LOS DERECHOS RESERVADOS</h6>
+        <h6 class="container-fluid footer text-center py-3">© COPYRIGHT CRUXSTUDIO - 2021. ALL RIGHTS RESERVED</h6>
     </footer>
     <!-- Fin - Footer -->
 

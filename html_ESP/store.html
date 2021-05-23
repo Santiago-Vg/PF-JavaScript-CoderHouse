@@ -71,8 +71,8 @@
                             </li>
                         </ul>
                         <span class="navbar-text">
-                            <a href="#store-tit" class="cart-tooltip"></a>
-                            <a id="cart-icon"><i class="fas fa-shopping-basket"></i></a>
+                            <a href="#store-tit" class="cart-tooltip" onclick="showCart()"></a>
+                            <a id="cart-icon" onclick="showCart()"><i class="fas fa-shopping-basket" ></i></a>
                             <a href="#store-tit" class="tienda-btn">tienda</a>
                         </span>
                     </div>
@@ -90,7 +90,7 @@
                     <p class="store-tit-sm">cruxstudio_</p>
                     <h1 id="store-tit" class="store-tit mb-3">TIENDA ONLINE</h1>
                     <div class="filter-container col-12">
-                        <input  id="product-search" class="col-lg-2 col-md-12 col-10 px-1" type="text" placeholder="Buscar">
+                        <input  id="product-search" class="col-lg-2 col-md-12 col-10 px-1" type="text" placeholder="Buscar" onkeyup="search()">
                         <select id="collections" class="col-lg-3 col-md-12 col-10">
                             <option value="All">Todas las Colecciones</option>
                             <option value="Casette Collection">Casette Collection</option>
@@ -98,7 +98,7 @@
                             <option value="X Meets Cloter">X Meets Cloter</option>
                             <option value="The New Hangers">The New Hangers</option>
                         </select>
-                        <button id="product-filter" class="col-lg-1 col-md-12 col-10">Filtrar</button>
+                        <button id="product-filter" class="col-lg-1 col-md-12 col-10" onclick="fetchData()">Filtrar</button>
                     </div>
                 </div>
                 <!-- Productos -->
@@ -110,7 +110,7 @@
 
     <!-- Carrito -->
     <section class="hidden-modal col-12">
-        <div class="modal .modal-lg" id="modal-cart" tabindex="-1">
+        <div class="modal .modal-lg" id="modal-cart" tabindex="-1" onclick="closeCart(event)">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Contenido del Carrito -->
@@ -137,8 +137,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="text-end ">
-                            <a id="discModal" class="cart-end">Tengo un Cupón</a>
-                            <a id="endPurchase" class="cart-end">Finalizar compra</a>
+                            <a id="discModal" onclick="openDiscModal()" class="cart-end">Tengo un Cupón</a>
+                            <a id="endPurchase" onclick="openModal(thanksModal)" class="cart-end">Finalizar compra</a>
                         </div>
                     </div>
                     <!-- Fin -- Contenido del Carrito -->
@@ -150,7 +150,7 @@
 
     <!-- Aplicador de Descuentos -->
     <section class="hidden-modal">
-        <div class="modal" id="discApplier" tabindex="-1">
+        <div class="modal" id="discApplier" onclick="closeDiscModal(event)" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -172,8 +172,8 @@
                                 <label for="discNone">No tengo un cupón.</label> 
                             </div>
                             <div class="col-12 text-center mt-5 mb-3">
-                                <a class="cart-end-cancel text-center" id="discBtnCancel">Cancelar</a>
-                                <a class="cart-end text-center" id="discBtnApply">Aplicar</a>
+                                <a class="cart-end-cancel text-center" id="discBtnCancel" onclick="closeDiscModal(event)">Cancelar</a>
+                                <a class="cart-end text-center" id="discBtnApply" onclick="discGenerator()">Aplicar</a>
                             </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
     <!-- Mensajes (Formato: Modal) -->
         <!-- Modal: Producto Añadido -->
         <section class="hidden-modal">
-            <div class="modal" id="addProduct-modal" tabindex="-1"> 
+            <div class="modal" id="addProduct-modal" tabindex="-1" onclick="closeModal(addProductModal)"> 
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -197,7 +197,7 @@
         </section>
         <!-- Compra Finalizada -->
         <section class="hidden-modal">
-            <div class="modal" id="thanks-modal" tabindex="-1">
+            <div class="modal" id="thanks-modal" onclick="closeThanksModal()" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
