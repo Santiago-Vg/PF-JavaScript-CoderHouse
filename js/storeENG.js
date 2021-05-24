@@ -232,6 +232,7 @@ let cart = []
                         </div>
                         `)
             $('#discApplier').hide()
+            return ( discounts[checkedDiscount] / cartPrice )
         }                   
 
 
@@ -254,7 +255,7 @@ let cart = []
             goToPayment()
         })
 
-// PASARELA MERCADO PAGO
+    // PASARELA MERCADO PAGO
     const goToPayment = async () => {
     
         const cartMercadoPago = cart.map( element => ({
@@ -264,7 +265,7 @@ let cart = []
             category_id: element.id,
             quantity: element.amount,
             currency_id: "ARS",
-            unit_price: element.price
+            unit_price: element.price * discGenerator()
         }) )
     
         const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
@@ -273,7 +274,8 @@ let cart = []
                 Authorization: 'Bearer TEST-326890859283949-052415-93fee1fbe9cd97d4538a22ee51d26730-12515680'
             },
             body: JSON.stringify({
-                items: cartMercadoPago
+                    items: cartMercadoPago,
+                    coupon_amount: 300,
             })
         })
     

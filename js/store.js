@@ -232,6 +232,7 @@ let cart = []
                         </div>
                         `)
             $('#discApplier').hide()
+            return ( discounts[checkedDiscount] / cartPrice )
         } 
 
 // MODALES DEL SITIO
@@ -263,7 +264,7 @@ const goToPayment = async () => {
         category_id: element.id,
         quantity: element.amount,
         currency_id: "ARS",
-        unit_price: element.price
+        unit_price: element.price * discGenerator()
     }) )
 
     const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
