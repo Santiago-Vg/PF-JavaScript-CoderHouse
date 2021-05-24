@@ -221,6 +221,7 @@ let cart = []
             </div>
             `
         discountsModal.style.display="none"
+        return ( discounts[checkedDiscount] / cartPrice )
     }
 
     const openModal = (modal) => {
@@ -247,7 +248,7 @@ let cart = []
             category_id: element.id,
             quantity: element.amount,
             currency_id: "ARS",
-            unit_price: element.price
+            unit_price: element.price * discGenerator()
         }) )
 
         const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
