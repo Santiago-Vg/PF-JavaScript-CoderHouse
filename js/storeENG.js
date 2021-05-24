@@ -48,7 +48,7 @@ let cart = []
             cards.innerHTML += `
                 <div class="card col-md-3 col-10 mb-5 align-items-center" id="${element.id}">
                     <img class="store-img img-fluid w-75" src="${element.thumbnailUrl}">
-                    <h2 class="piece-name">${element.title}</h2>
+                    <h2 class="piece-name">${element.titleEng}</h2>
                     <p class="piece-value">${element.price}</p>
                     <button class="btn ver-mas-btn buy" onclick="addToCart(${element.id}); openModal(addProductModal)">Add to Cart</button>
                 </div>`
@@ -231,8 +231,36 @@ let cart = []
     }
 
     const closeThanksModal = () => {
+        goToPayment()
         thanksModal.style.display="none"
         cartModal.style.display="none"
+    }
+
+    const goToPayment = async () => {
+
+        const cartMercadoPago = cart.map( element => ({
+            title: element.titleEng,
+            description: "",
+            picture_url: element.image,
+            category_id: element.id,
+            quantity: element.amount,
+            currency_id: "ARS",
+            unit_price: element.price
+        }) )
+
+        const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
+            method: "POST",
+            headers: {
+                Authorization: 'Bearer TEST-326890859283949-052415-93fee1fbe9cd97d4538a22ee51d26730-12515680'
+            },
+            body: JSON.stringify({
+                items: cartMercadoPago
+            })
+        })
+
+        const data = await resp.json()
+        window.open(data.init_point, "_blank")
+        
         emptyCart()
         window.location.href = "../index.html";
     }
