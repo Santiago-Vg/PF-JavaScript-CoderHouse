@@ -66,7 +66,7 @@ let cart = []
     //  Añadir Producto al Carrito
         $(document).on('click', '.buy', function(){
             addToCart(this.value);
-            $('#discounts').attr("style", "display: none;")
+            $('#discounts').hide()
         })
 
         const addToCart = (elementId) => {
@@ -158,7 +158,6 @@ let cart = []
                         <td>$ <span id="cart-prize">${nPrice}</span></td>
                     </div>
                     `)
-                $('#discounts').show()
                 $('.text-end').show()
             }
         }
@@ -196,7 +195,7 @@ let cart = []
         })
 
 // APLICAR DESCUENTOS
-    // Abir y Cerrar modal para aplicar descuentos
+    // Abrir y Cerrar modal para aplicar descuentos
         $('#discModal').on('click', function(){
             $('#discApplier').show()
         })
@@ -223,6 +222,7 @@ let cart = []
                 'none': cartPrice
             }
             $('#cart-prize').addClass('old-prize')
+            $('#discounts').show()
             $('#discounts').html(`
                         <div id="cart-footer">
                             <td></td>
